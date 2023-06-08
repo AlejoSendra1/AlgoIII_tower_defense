@@ -1,34 +1,26 @@
 package edu.fiuba.algo3.modelo.lectorJSON;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
 
 import edu.fiuba.algo3.modelo.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-public class LectorEnemigos {
-    public Queue<ArrayList<Enemigo>> colaSpawner;
-    LectorEnemigos(){
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class CreadorEnemigos implements Creador {
+    Queue<ArrayList<Enemigo>> colaSpawner;
+    public CreadorEnemigos(){
         colaSpawner = new LinkedList<>();
     }
 
-    public Queue<ArrayList<Enemigo>> leerEnemigos() {
-        JSONParser jsonParser = new JSONParser();
-
-        try (FileReader reader = new FileReader("ArchivosJson/enemigos.json")) {
-            Object obj = jsonParser.parse(reader);
-
-            JSONArray listaTurnos = (JSONArray) obj;
-            listaTurnos.forEach( turno -> crearTurno( (JSONObject) turno) );
-
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
-        System.out.println(colaSpawner);
+    public Object crear() {
+        crearTurnoEnemigos(Lector.leer("ArchivosJson/enemigos.json", "Enemigo"));
         return colaSpawner;
+    }
+    public void crearTurnoEnemigos(JSONArray listaTurnos) {
+        listaTurnos.forEach( turno -> crearTurno( (JSONObject) turno) );
     }
     private void crearTurno(JSONObject turno) {
         final int POSICION_HORMIGAS = 0;
@@ -47,7 +39,6 @@ public class LectorEnemigos {
             jsonArray.add(enemigoObject.get(key));
         }
 
-
         int cantidadHormigas = ((Long) jsonArray.get(POSICION_HORMIGAS)).intValue();
         for(int i=0; i<cantidadHormigas;i++){
             enemigosTurnoActual.add(new Hormiga(pasarelaInicial));
@@ -60,5 +51,3 @@ public class LectorEnemigos {
         colaSpawner.add(enemigosTurnoActual);
     }
 }
-
-
