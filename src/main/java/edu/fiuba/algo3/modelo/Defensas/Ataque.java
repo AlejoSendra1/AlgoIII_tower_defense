@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Defensas;
 
 import edu.fiuba.algo3.modelo.Enemigos.Enemigo;
+import edu.fiuba.algo3.modelo.Enemigos.Topo;
 
 
 public class Ataque  implements TipoDeDefensa{
@@ -13,4 +14,5 @@ public class Ataque  implements TipoDeDefensa{
     public void atacar(Enemigo enemigo){
         enemigo.recibirDanio(this.danio);
     }
+
 }

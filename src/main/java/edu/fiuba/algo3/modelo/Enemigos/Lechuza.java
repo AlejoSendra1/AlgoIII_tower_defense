@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo.Enemigos;
 
+import edu.fiuba.algo3.modelo.Defensas.TipoDeDefensa;
+import edu.fiuba.algo3.modelo.Defensas.Trampa;
+import edu.fiuba.algo3.modelo.miscelanea.Coordenada;
+
 public class Lechuza extends Enemigo{
 
     public Lechuza(){
@@ -19,6 +23,10 @@ public class Lechuza extends Enemigo{
     public void daniarJugador() {
         super.daniarJugador();
         //se debe  agregar la destruccion de la torre
+    }
+
+    public boolean estaEnRango(Coordenada coordenada, int rangoAtaque, Trampa tipoDeDefensa){
+        return false;
     }
 
     public void morir(){

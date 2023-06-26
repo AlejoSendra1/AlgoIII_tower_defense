@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.Enemigos;
+import edu.fiuba.algo3.modelo.Defensas.TipoDeDefensa;
 import edu.fiuba.algo3.modelo.Excepciones.PasarelaInexistente;
 import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.lectorJSON.Mapa;
@@ -61,7 +62,7 @@ public abstract class Enemigo extends Sprayable {
         this.efectoEnemigo = this.efectoEnemigo.avanzar(this.cantidadMovimientos, this.tipoMovimiento, mapa);
     }
 
-    public boolean estaEnRango(Coordenada posicion, int distancia){
+    public boolean estaEnRango(Coordenada posicion, int distancia, TipoDeDefensa tipoDeDefensa){
         return this.tipoMovimiento.estaEnRango(posicion, distancia);
     }
 

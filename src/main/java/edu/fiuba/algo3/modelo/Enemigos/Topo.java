@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo.Enemigos;
 
+import edu.fiuba.algo3.modelo.Defensas.Ataque;
+import edu.fiuba.algo3.modelo.Defensas.Trampa;
+import edu.fiuba.algo3.modelo.miscelanea.Coordenada;
 import edu.fiuba.algo3.modelo.parcelas.Parcela;
 
 public class Topo extends Enemigo{
@@ -36,6 +39,10 @@ public class Topo extends Enemigo{
             this.cantidadMovimientos = 3;
         }
 
+    }
+
+    public boolean estaEnRango(Coordenada coordenada, int rangoAtaque, Ataque tipoDeDefensa){
+        return false;
     }
 
     public void morir(){
